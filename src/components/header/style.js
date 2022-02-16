@@ -8,6 +8,7 @@ export const Style =styled.div`
         top:0;
         width:100%;
         z-index:104;
+        background:#ffffff;
     }
 `;
 export default Style;
