@@ -86,15 +86,6 @@ export function Home(){
             )
         });
     }
-    // function plusRank(){
-    //     try{
-    //         setRank(rank + 1);
-    //         const response = await api.get("assets", {rank: rank + 1});
-    //         setAssets(assets.concat(response.data.data));
-    //     }catch(e){
-
-    //     }
-    // };
     async function loadMore(){
         try{
             setOffset(offset + 10);
@@ -107,7 +98,49 @@ export function Home(){
     return(
         <DefaultLayout>
             <Style>
-                <div className="container position">
+                <div className="back-banner">
+                    <div className="container back-banner-pos">
+                        <Row justify="space-between" align="middle">
+                            <Col>
+                                <Col>
+                                    <Row justify="center" align="middle"><div className="label">MARCKET CAP</div></Row>
+                                    <Row justify="center" align="middle"><div className="value">$2.00T</div></Row>
+                                </Col>
+                            </Col>
+                            <Col>
+                                <Col>
+                                    <Row justify="center" align="middle"><div className="label">EXCHANGE VOL</div></Row>
+                                    <Row justify="center" align="middle"><div className="value">$71.02B</div></Row>
+                                </Col>
+                            </Col>
+                            <Col>
+                                <Col>
+                                    <Row justify="center" align="middle"><div className="label">ASSTES</div></Row>
+                                    <Row justify="center" align="middle"><div className="value">2295</div></Row>
+                                </Col>
+                            </Col>
+                            <Col>
+                                <Col>
+                                    <Row justify="center" align="middle"><div className="label">EXCHANGE</div></Row>
+                                    <Row justify="center" align="middle"><div className="value">73</div></Row>
+                                </Col>
+                            </Col>
+                            <Col>
+                                <Col>
+                                    <Row justify="center" align="middle"><div className="label">MARCKETS</div></Row>
+                                    <Row justify="center" align="middle"><div className="value">18,123</div></Row>
+                                </Col>
+                            </Col>
+                            <Col>
+                                <Col>
+                                    <Row justify="center" align="middle"><div className="label">BTC DOM INDEX</div></Row>
+                                    <Row justify="center" align="middle"><div className="value">41.0%</div></Row>
+                                </Col>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+                <div className="container">
                     <div className="loading" style={{display: loading ? "block" : "none"}}>loading...</div>
                     {/* <ul>
                     {renderFarm()}
