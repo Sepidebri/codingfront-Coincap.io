@@ -12,7 +12,7 @@ export const Style =styled.div`
         left:0;
         width:100%;
         .back-banner-pos{
-            padding-top:80px;
+            padding:80px 30px 0 30px;
             font-size:16px;
             color:#ffffff;
             .value{
