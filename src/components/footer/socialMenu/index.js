@@ -1,4 +1,3 @@
-import { Col, Row} from "antd";
 import { FacebookFilled, TwitterOutlined} from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import Style from "./style";

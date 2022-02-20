@@ -10,7 +10,6 @@ export function Home(){
     const [assets, setAssets] = useState([]);
     const [limit, setLimit] = useState(10);
     const [offset, setOffset] = useState(0);
-    // const [rank, setRank] = useState(1);
     const columnsObject =[
         {
             title: 'Rank',
