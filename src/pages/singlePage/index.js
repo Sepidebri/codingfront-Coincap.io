@@ -6,6 +6,8 @@ import { Button, Col, Descriptions, Row } from 'antd';
 import Style from "./style";
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
 import Chart from "./tradeContent/chart";
+import TradeInstru from "./tradeContent/tradeInstrument";
+import TradeContent from "./tradeContent";
 
 export function SinglePage(){
     const [item, setItem] = useState({});
@@ -39,12 +41,12 @@ export function SinglePage(){
     function numFormatter(num) {
         if(num > 999 && num < 1000000){
             return (num/1000).toFixed(2) + 'K'; // convert to K for number from > 1000 < 1 million 
-        }else if(num > 1000000){
+        }else if(num < 1000000000  && num > 1000000){
             return (num/1000000).toFixed(2) + 'M'; // convert to M for number from > 1 million 
-        }else if(num > 1000000000){
+        }else if( num < 1000000000000 && num > 1000000000){
             return (num/1000000000).toFixed(2) + 'B'; // convert to B for number from > 1 billion
         }else if(num > 1000000000000){
-            return (num/1000000000000).toFixed(2) + 'T'; // convert to T for number from > 1 trillion 
+            return ( num/1000000000000).toFixed(2) + 'T'; // convert to T for number from > 1 trillion 
         }else if(num < 900){
             return num; // if value < 1000, nothing to do
         }
@@ -110,13 +112,7 @@ export function SinglePage(){
                         </Descriptions>
                     </div>
                 </div>
-                <div className="container">
-                    <div className="chart">
-                        <Chart/>
-                    </div>
-                    <div className="trade-instrument">
-                    </div>
-                </div>
+                <TradeContent/>
             </Style>
         </DefaultLayout>
     )

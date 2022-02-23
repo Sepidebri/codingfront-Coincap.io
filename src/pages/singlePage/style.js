@@ -14,6 +14,7 @@ export const Style = styled.div `
                 flex-direction:column;
                 justify-content:center;
                 align-items:center;
+                padding-left:30px;
                 .flag-top{
                     width: calc(100% + 20px);
                     height: 10px;
