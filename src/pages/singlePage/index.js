@@ -5,9 +5,8 @@ import DefaultLayout from "components/layouts/defaultLayout";
 import { Button, Col, Descriptions, Row } from 'antd';
 import Style from "./style";
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
-import Chart from "./tradeContent/chart";
-import TradeInstru from "./tradeContent/tradeInstrument";
 import TradeContent from "./tradeContent";
+import ExchangeTable from "components/exchangeTable";
 
 export function SinglePage(){
     const [item, setItem] = useState({});
@@ -113,6 +112,7 @@ export function SinglePage(){
                     </div>
                 </div>
                 <TradeContent/>
+                <ExchangeTable/>
             </Style>
         </DefaultLayout>
     )

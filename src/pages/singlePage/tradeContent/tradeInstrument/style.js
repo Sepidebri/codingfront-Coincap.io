@@ -40,8 +40,8 @@ height: 420px;
                 }
                 .ant-select-selector{
                     &:hover{
+                        color: rgb(22, 171, 113);
                         cursor: pointer;
-                        color: rgb(22, 171, 113)
                     }
                 }
                 
@@ -53,7 +53,7 @@ height: 420px;
             margin: 16px 0px 16px 20px;
             max-width: 25px;
             display: block ;
-            color: rgb(24, 198, 131)
+            color: rgb(24, 198, 131);
             cursor: pointer;
         }
     }

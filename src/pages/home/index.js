@@ -141,9 +141,6 @@ export function Home(){
                 </div>
                 <div className="container">
                     <div className="loading" style={{display: loading ? "block" : "none"}}>loading...</div>
-                    {/* <ul>
-                    {renderFarm()}
-                    </ul> */}
                     <Table columns={columnsObject} dataSource={assets} pagination={false}/>
                     <Row justify="center" align="middle">
                         <Col>
