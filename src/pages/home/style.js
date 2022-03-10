@@ -61,6 +61,43 @@ export const Style =styled.div`
                 .font{
                     font-weight:400;
                 }
+                tbody{
+                    tr{
+                        td{
+                            .ant-space{
+                                justify-content:center;
+                                .ant-space-item{
+                                    span{
+                                        display: inline-block;
+                                        a{
+                                            display: inline-block;
+                                            text-align: right;
+                                            img{
+                                                display: inline-block;
+                                                width:60%;
+                                            }
+                                            
+                                        }
+                                        .name-head{
+                                            a{
+                                                font-size: 16px;
+                                                display: inline-block;
+                                                color: rgba(0, 0, 0, 0.9);
+                                            }
+                                        }
+                                        .symbol-content{
+                                            a{
+                                                display: inline-block;
+                                                font-size: 13px;
+                                                color: rgba(0, 0, 0, 0.7);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         button{

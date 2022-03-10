@@ -59,7 +59,7 @@ export function ExchangeTable(){
     async function loadMore(){
         try{
             setOffset(offset + 10);
-            const response = await api.get("assets", {limit:limit, offset: offset +10 });
+            const response = await api.get(`assets/${id}/markets`, {limit:limit, offset: offset +10 });
             setMarket(market.concat(response.data.data));
         }catch(e){
 

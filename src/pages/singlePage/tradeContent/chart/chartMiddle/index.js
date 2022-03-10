@@ -1,9 +1,8 @@
 import Style from "./style";
-import  Chart  from "chart.js/auto";
 import api from "utils/api";
 import { useEffect, useState } from "react";
 import timestampToHour from "utils/api/timestampToTime";
-import { Link, useParams } from "react-router-dom";
+import {useParams } from "react-router-dom";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -13,37 +12,40 @@ import {
     Title,
     Tooltip,
     Legend,
-  } from 'chart.js';
-  import { Line } from 'react-chartjs-2';
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend
 );
 export const options = {
     responsive: true,
     plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Chart.js Line Chart',
-      },
+        legend: {
+            position: 'top',
+        },
+        title: {
+            display: false,
+            text: 'Chart.js Line Chart',
+        },
     },
-  };
-  
-
-  
+    layout: {
+        padding: {
+            top:20,
+            right:40,
+            bottom:20
+        }
+    },
+};
 export function ChartMiddle(){
     const [assets, setAssets] = useState([]);
     const [item, setItem]= useState({})
     const {id} = useParams();
-    
     useEffect(function(){
         async function getApi(){
             try{
@@ -71,18 +73,14 @@ export function ChartMiddle(){
     const data = {
         labels,
         datasets: [
-          {
-            label: 'Dataset 1',
-            data: manipulatePrice(),
-            borderColor: 'rgb(255, 99, 132)',
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-          },
+            {
+                label:item.symbol,
+                data: manipulatePrice(),
+                borderColor: '#f44336',
+                backgroundColor: '#fdd9d7',
+                fillColor: '#fdd9d7'
+            },
         ],
-      };
-    
-    function changeToAmPm(){
-        const time = new Date();
-        time.toLocaleString('en-US', { hour: 'numeric', hour12: true });
     };
     return(
         <Style>

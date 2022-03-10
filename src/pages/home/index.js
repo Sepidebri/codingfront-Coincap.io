@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import DefaultLayout from "components/layouts/defaultLayout";
 import api from 'utils/api';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Style from "./style";
-import { Button, Table, Row, Col } from "antd";
+import { Button, Table, Row, Col, Space } from "antd";
+import numFormatter from "utils/numFormatter";
 
 export function Home(){
     const [loading, setLoading] = useState(false);
     const [assets, setAssets] = useState([]);
+    const [images, setImages] = useState({});
     const [limit, setLimit] = useState(10);
     const [offset, setOffset] = useState(0);
+    const src = "@2x.png";
+    const srcImg ="https://assets.coincap.io/assets/icons/";
     const columnsObject =[
         {
             title: 'Rank',
@@ -23,46 +27,64 @@ export function Home(){
             dataIndex: 'id',
             key: 'id',
             sorter: (a, b) => a.id - b.id,
-            render: text => <Link to={`/crypto/${text}`}>{text}</Link>,
+            render: (text, record) => (
+                <Space>
+                    <span>
+                        <Link  to={`/crypto/${text}`}>
+                        <img src={`${srcImg}${record.symbol.toLowerCase()}${src}`} />
+                        </Link>
+                    </span>
+                    <span>
+                        <div className="name-head">
+                        <Link to={`/crypto/${text}`}>{record.name}</Link>
+                        </div>
+                        <div className="symbol-content">
+                        <Link to={`/crypto/${text}`}>{record.symbol}</Link>
+                        </div>
+                        
+                    </span>
+                </Space>
+            ) ,
         },
         {
             title: 'Price',
             dataIndex: 'priceUsd',
             key: 'priceUsd',
             sorter: (a, b) => a.priceUsd - b.priceUsd,
-            render: text => <p className="center">{Math.round((text) * 100) / 100}</p>,
+            render: (text) => (
+            <p className="center">${Math.round((text) * 100) / 100}</p>
+            ),
         },
         {
             title: 'Marcket Cap',
             dataIndex: 'marketCapUsd',
             key: 'marketCapUsd',
             sorter: (a, b) => a.marketCapUsd - b.marketCapUsd,
-            render: text => <p className="center">{Math.round((text) * 100) / 100}</p>,
+            render: text => <p className="center">{numFormatter(Math.round((text) * 100) / 100)}</p>,
         },
         {
             title: 'VWAP(24Hr)',
             dataIndex: 'vwap24Hr',
             key: 'vwap24Hr',
-            render: text => <p className="center">{Math.round((text) * 100) / 100}</p>,
+            render: text => <p className="center">${Math.round((text) * 100) / 100}</p>,
         },
         {
             title: 'Suplly',
             dataIndex: 'supply',
             key: 'supply',
-            render: text => <p className="center">{Math.round((text) * 100) / 100}</p>,
+            render: text => <p className="center">{numFormatter(Math.round((text) * 100) / 100)}</p>,
         },
         {
             title: 'Change(24Hr)',
             dataIndex: 'changePercent24Hr',
             key: 'changePercent24Hr',
             sorter: (a, b) => a.changePercent24Hr - b.changePercent24Hr,
-            render: text => {
-                return(
-                    <p className="right" id="change-color">{Math.round((text) * 100) / 100}</p>
-                )
-            },
+            render: text => (
+                <p className="right" id="change-color" style={{color: text > 0 ? "#09c048" : text < 0 ? "rgb(244, 67, 54)" : "#000000"}}>{Math.round((text) * 100) / 100}%</p>
+            ),
         },
     ]
+    
     useEffect(function(){
         async function getApi(){
             try{
@@ -91,7 +113,6 @@ export function Home(){
             const response = await api.get("assets", {limit:limit, offset: offset +10 });
             setAssets(assets.concat(response.data.data));
         }catch(e){
-
         }
     }
     return(

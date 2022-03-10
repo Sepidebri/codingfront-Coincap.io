@@ -64,7 +64,7 @@ export function TradeInstru(){
                     <div className='header-middle-swapper-content'>
                         <div className='assets-crypto'>0</div>
                         <div className='render'>
-                        <Select defaultValue={item.symbol} bordered={false} style={{ width: 250 }} onChange={handleChange}>
+                        <Select defaultValue='BTC' bordered={false} style={{ width: 250 }} onChange={handleChange}>
                             {renderFarm()}
                         </Select>
                         </div>
