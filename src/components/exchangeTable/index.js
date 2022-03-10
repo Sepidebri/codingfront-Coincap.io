@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from 'utils/api';
 import Style from './style';
-import { Table, Row, Col, Button } from 'antd';
+import { Table, Row, Col, Button, Space } from 'antd';
 import { useParams } from "react-router-dom";
 
 
@@ -22,7 +22,11 @@ export function ExchangeTable(){
             title: 'Pair',
             dataIndex: `baseSymbol/quoteSymbol`,
             key: `baseSymbol/quoteSymbol`,
-            
+            render: (text, record) => (
+                <Space>
+                    <p>{record.baseSymbol}/{record.quoteSymbol}</p>
+                </Space>
+            )
         },
         {
             title: 'Price',
