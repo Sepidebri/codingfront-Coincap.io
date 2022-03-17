@@ -3,12 +3,24 @@ import styled from "styled-components";
 export const Style =styled.div`
 display: flex;
 margin-top:30px;
-    .left-content{
+padding-bottom:20px;
+align-items:center;
+.left-content{
         flex:40%;
-        div{
-            &:first-child{
-                padding-bottom:20px;
-            };
+        display:flex;
+        align-items:center;
+        .logo-content{
+            img{
+                display:inline-block;
+                padding-right:20px;
+            }
+        }
+        .info-content-logo{
+            div{
+                &:first-child{
+                    margin-bottom:10px;
+                }
+            }
         }
     }
     .right-content{

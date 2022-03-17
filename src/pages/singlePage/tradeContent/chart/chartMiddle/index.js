@@ -1,7 +1,7 @@
 import Style from "./style";
 import api from "utils/api";
 import { useEffect, useState } from "react";
-import timestampToHour from "utils/api/timestampToTime";
+import timestampToHour from "utils/timestampToTime";
 import {useParams } from "react-router-dom";
 import {
     Chart as ChartJS,
@@ -44,12 +44,13 @@ export const options = {
 };
 export function ChartMiddle(){
     const [assets, setAssets] = useState([]);
-    const [item, setItem]= useState({})
+    const [item, setItem]= useState({});
+    const [timeframe, setTimeframe] = useState({});
     const {id} = useParams();
     useEffect(function(){
         async function getApi(){
             try{
-                const response = await api.get(`assets/${id}/history?interval=d1`);
+                const response = await api.get(`assets/${id}/history?interval=${timeframe}`);
                 const responseI = await api.get(`assets/${id}`);
                 console.log(response);
                 setAssets(response.data.data);

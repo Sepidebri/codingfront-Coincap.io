@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Style = styled.div`
     padding: 48px 0;
     background: rgb(236, 239, 241);
+    border: 1px solid #d4d4d5;
     table{
         box-shadow: rgb(0 0 0 / 40%) 0px 2px 15px -3px;
     }

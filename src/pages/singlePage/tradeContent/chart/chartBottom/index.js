@@ -2,24 +2,21 @@ import Style from "./style";
 import api from "utils/api";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Button } from "antd";
 
 export function ChartBottom(){
-    const [assets, setAssets] = useState([]);
-    const {id} = useParams();
-    useEffect(function(){
-        async function getApi(){
-            try{
-                const response = await api.get(`assets/${id}/markets`);
-                console.log(response);
-                setAssets(response.data.data);
-            }catch(e){
-            }
-        }
-        getApi();
-    }, []);
+    const time =['m1', 'm5', 'm15', 'm30', 'h1', 'h2', 'h6', 'h12', 'd1'];
+
+    function renderFarmTime(){
+        return time.map((item) => {
+            return(
+                <Button key={item.indexOf} type="link" value="small" shape="round">{item}</Button>
+            )
+        });
+    }; 
     return(
         <Style>
-            <p>bottom</p>
+            <div>{renderFarmTime()}</div>
         </Style>
     )
 };

@@ -6,6 +6,8 @@ import api from "utils/api";
 export function ChartTop(){
     const [item, setItem] = useState({});
     const {id} = useParams();
+    const src = "@2x.png";
+    const srcImg ="https://assets.coincap.io/assets/icons/";
     useEffect(function(){
         async function getApi(){
             try{
@@ -39,8 +41,13 @@ export function ChartTop(){
     return(
         <Style>
             <div className="left-content">
-                <div>{item.name} ({item.symbol})</div>
-                <div>{formatDate()}</div>
+                <div className="logo-content">
+                    {/* <img src={`${srcImg}${item.symbol.toLowerCase()}${src}`} /> */}
+                </div>
+                <div className="info-content-logo">
+                    <div><h3>{item.name} ({item.symbol})</h3></div>
+                    <div>{formatDate()}</div>
+                </div>
             </div>
             <div className="right-content">
                 <div className="right-content-left">
