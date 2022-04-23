@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Style =styled.div`
     background: rgb(236, 239, 241);
     .back-banner{
-        margin-top: 28px ;
+        margin-top: 0.9rem ;
         background: linear-gradient(to right, rgb(63, 81, 181), rgb(100, 181, 246)) rgb(255, 255, 255) ;
         border: none ;
         padding-bottom: 150px ;
@@ -13,10 +13,12 @@ export const Style =styled.div`
         width:100%;
         .back-banner-pos{
             padding:80px 30px 0 30px;
-            font-size:16px;
+            font-size:1.1rem;
+            font-weight: 600;
             color:#ffffff;
             .value{
-                font-size:30px;
+                font-size: 0.9rem;
+                font-weight: bold;
             }
         }    
     }

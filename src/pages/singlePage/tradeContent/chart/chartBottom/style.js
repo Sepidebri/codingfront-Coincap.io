@@ -10,7 +10,12 @@ margin-bottom:50px;
             background: rgb(24, 198, 131);
             color: #ffffff;
         }
-        
+        &.ant-btn-link{
+            color:rgb(24,198,131);
+            &:hover{
+                color: #ffffff;
+            }
+        }
     }
 `;
 export default Style;

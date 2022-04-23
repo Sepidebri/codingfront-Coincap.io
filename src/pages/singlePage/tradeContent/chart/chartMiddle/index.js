@@ -3,6 +3,7 @@ import api from "utils/api";
 import { useEffect, useState } from "react";
 import timestampToHour from "utils/timestampToTime";
 import {useParams } from "react-router-dom";
+import { Button } from "antd";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -42,24 +43,34 @@ export const options = {
         }
     },
 };
+    
 export function ChartMiddle(){
     const [assets, setAssets] = useState([]);
     const [item, setItem]= useState({});
-    const [timeframe, setTimeframe] = useState({});
     const {id} = useParams();
+    const timeframes =['m1', 'm5', 'm15', 'm30', 'h1', 'h2', 'h6', 'h12', 'd1'];
+    const [timeframe, setTimeframe] = useState('d1');
     useEffect(function(){
         async function getApi(){
             try{
                 const response = await api.get(`assets/${id}/history?interval=${timeframe}`);
                 const responseI = await api.get(`assets/${id}`);
-                console.log(response);
                 setAssets(response.data.data);
                 setItem(responseI.data.data);
             }catch(e){
             }
         }
         getApi();
-    }, []);
+        setTimeframe(timeframe);
+    }, [timeframe]);
+    
+    function renderFarmTime(){
+        return timeframes.map((item) => {
+            return(
+                <Button key={item.indexOf} onClick={() => setTimeframe(item)}  type="link" value="small" shape="round">{item}</Button>
+            )
+        });
+    }; 
     function manipulateTime(){
         return assets.map((item) => {
             return timestampToHour(item.time)
@@ -86,6 +97,7 @@ export function ChartMiddle(){
     return(
         <Style>
         <Line options={options} data={data} />
+        {renderFarmTime()}
         </Style>
     )
 };
